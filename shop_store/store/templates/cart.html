@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Shoping cart
+{% endblock %}
+
+{% block headline %}
+{% endblock %}
+
+{% block content %}
+
+<body>
+    <header class="header text-white p-3">
+        <h1 class="text-center">Shopping Cart</h1>
+    </header>
+
+    <main class="container mt-4">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                {% for p in p %}
+                {% if p.category == "T" %}
+              
+                <tr>
+                    <td>{{ p.itemname }}</td>
+                    <td>{{ p.price }}</td>
+                    <td>
+                        <input type="number" class="form-control" name="quantity" value="{{ p.quantity }}">
+                    </td>
+                    <td>{{p.price}}</td>
+                    <td><button type="button" class="remove-btn" data-product-id="{{ item.product.id }}">Remove</button>
+                    </td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+        <div class="text-right">
+            <h4>Total: <span id="cart-total">$0.00</span></h4>
+        </div>
+
+        <div class="text-right">
+            <a href="/store/login?clickCount=2" class="back-btn">送出</a>
+        </div>
+        <div class="text-center">
+            <a href="/store" class="back-btn">Back to Home</a>
+
+        </div>
+
+    </main>
+
+    <footer class="text-center p-3">
+        &copy; 2023 Shopping Cart.
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- <script>
+        // 購物車項目的資料
+        const cartItems = [
+            {
+                id: 1,
+                name: "Product 1",
+                price: 19.99,
+                quantity: 2
+            },
+            {
+                id: 2,
+                name: "Product 2",
+                price: 29.99,
+                quantity: 1
+            },
+            {
+                id: 3,
+                name: "Product 3",
+                price: 9.99,
+                quantity: 3
+            }
+        ];
+
+
+
+        // 初始化購物車
+        function initializeCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            let total = 0;
+
+            const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+
+
+            cartItems.forEach(item => {
+                const row = document.createElement('tr');
+
+                // 產品名稱
+                const nameCell = document.createElement('td');
+                nameCell.textContent = item.name;
+                row.appendChild(nameCell);
+
+                // 價格
+                const priceCell = document.createElement('td');
+                priceCell.textContent = item.price.toFixed(2);
+                row.appendChild(priceCell);
+
+                // 數量
+                const quantityCell = document.createElement('td');
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.min = 1;
+                quantityInput.value = item.quantity;
+                quantityInput.classList.add('form-control');
+                quantityCell.appendChild(quantityInput);
+                row.appendChild(quantityCell);
+
+                // 總計
+                const totalCell = document.createElement('td');
+                const itemTotal = (item.price * item.quantity).toFixed(2);
+                totalCell.textContent = itemTotal;
+                row.appendChild(totalCell);
+
+                // 移除按鈕
+                const removeCell = document.createElement('td');
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.classList.add('btn', 'btn-danger', 'btn-sm');
+                removeButton.addEventListener('click', () => {
+                    removeCartItem(item.id);
+                });
+                removeCell.appendChild(removeButton);
+                row.appendChild(removeCell);
+
+                cartItemsContainer.appendChild(row);
+
+                total += parseFloat(itemTotal);
+            });
+
+            // 更新總計
+            const cartTotalElement = document.getElementById('cart-total');
+            cartTotalElement.textContent = total.toFixed(2);
+        }
+
+        // 移除購物車項目
+        function removeCartItem(itemId) {
+            const index = cartItems.findIndex(item => item.id === itemId);
+            if (index !== -1) {
+                cartItems.splice(index, 1);
+                const cartItemsContainer = document.getElementById('cart-items');
+                cartItemsContainer.innerHTML = '';
+                initializeCart();
+            }
+        }
+
+        initializeCart();
+
+
+        // 檢查是否已登入並顯示成功訊息
+            function checkLoggedIn() {
+                const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+                if (isLoggedIn === 'true') {
+                    alert('您已成功購買商品！');
+                    isLoggedIn === 'false';
+                }
+            }
+
+            // 在頁面載入完成後執行檢查
+            window.addEventListener('DOMContentLoaded', checkLoggedIn);
+
+
+    </script> -->
+
+
+    {% endblock %}

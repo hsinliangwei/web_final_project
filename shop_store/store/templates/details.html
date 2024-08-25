@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}
+Prouduct Details !
+{% endblock %}
+
+
+{% block content %}
+
+<body>
+    <header class="header text-white p-3">
+        <h1 class="text-center">Prouduct Details</h1>
+    </header>
+    <div class="detail-container">
+        {% for item in p %}
+        <img class="product-image" src="{{ item.photo.url}}" class="card-img-top" alt="產品圖">
+
+
+        <div class="product-details">
+            <h2 class="product-title">{{ item.itemname }}</h2>
+
+            <div class="price">價格: ${{ item.price }}</div>
+
+            <div class="description">
+                <h3>商品描述</h3>
+                <p>{{item.describe}}</p>
+            </div>
+
+            <div class="size-options">
+                <h3>尺寸</h3>
+                <select id="size-select">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+            </div>
+
+            <div class="color-options">
+                <h3>顏色</h3>
+                <input type="radio" name="color" value="Red"> 紅色
+                <input type="radio" name="color" value="Blue"> 藍色
+                <input type="radio" name="color" value="Green"> 綠色
+            </div>
+
+            <div class="stock">
+                <h3>庫存</h3>
+                <p>庫存數量: 10</p>
+            </div>
+
+            <!-- <div class="product-images">
+                <h3>產品圖片</h3>
+                <img src="{{ item.photo.url}}" class="card-img-top" alt="產品圖">
+                <img src="image2.jpg" alt="圖片2">
+                <img src="image3.jpg" alt="圖片3">
+            </div> -->
+            <div class="col my-1">
+                <button type="button" class="my-btn add-to-cart-btn"
+                  data-bs-toggle="modal" data-bs-target="#addToCartModal">加入購物車</input>
+              </div>
+        </div>
+
+        
+        
+    </div>
+    {% endfor %}
+    <div class="text-center">
+        <button type="button" class="back-btn"><a href="/store" class="back-a">Back to Home</a></button>
+    </div>
+</body>
+
+
+
+
+
+
+<!-- {% if p.bmi >= 24 or p.bmi == 18.5 %}
+<h1>不健康</h1>
+{% else %}
+<h1>健康</h1>
+{% endif %} -->
+
+
+
+{% endblock %}

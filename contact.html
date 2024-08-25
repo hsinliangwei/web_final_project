@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact Form</title>
+        <style>
+            body {
+                background-color: #f2e6ff;
+
+            }
+
+            .container {
+                max-width: 400px;
+                margin: 0 auto;
+                margin-top: 60px;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #ffffff;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+                margin-right: 20px;
+            }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+            }
+
+            .form-group textarea {
+                height: 100px;
+            }
+
+            .form-group button {
+                padding: 10px 20px;
+                background-color: #8b3eaf;
+                color: #fff;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+
+            .form-group button:hover {
+                background-color: #45a049;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <h2>Contact Form</h2>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            document.getElementById('contact-form').addEventListener('submit', function (event) {
+                event.preventDefault(); // 防止表單提交預設行為
+
+                // 獲取表單數據
+                var name = document.getElementById('name').value;
+                var email = document.getElementById('email').value;
+                var message = document.getElementById('message').value;
+
+                // 在這裡可以進一步處理表單數據，例如發送到伺服器或儲存到資料庫
+
+                // 清空表單
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+
+                // 顯示成功訊息或其他操作
+                alert('Thank you for your message!');
+            });
+        </script>
+    </body>
+
+</html>
